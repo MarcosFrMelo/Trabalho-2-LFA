@@ -28,7 +28,7 @@ def extrair_emails(texto):
     return re.findall(padrao, texto)
 
 if __name__ == "__main__":
-    nome = "João da Silva_-"
+    nome = "João da Silva"
     cpf = "123.456.789-00"
     email = "joao.silva@example.com"
     telefone = "(12)34567-8901"
