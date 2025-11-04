@@ -1,6 +1,9 @@
+#Criado por Marcos Freire de Melo e Luiz Felipe da Paz Leal
+
 import re
+
 def validar_nome(nome):
-    padrao = r'^[a-zA-ZÀ-ú ]{1,50}$'
+    padrao = r'^[a-zA-ZçÇáéíóúÁÉÍÓÚàÀãõÃÕâêôÂÊÔ ]{1,50}$'
     return re.match(padrao, nome) is not None
 
 def validar_cpf(cpf):
@@ -8,10 +11,11 @@ def validar_cpf(cpf):
     padrao_numerico = r'^\d{11}$'
     if re.match(padrao, cpf):
         return True
+    
     return re.match(padrao_numerico, cpf) is not None
 
 def validar_email(email):
-    padrao = r'^[\w\._-]{2,}@[\w\._-]+\.[a-z]{2,3}(?:\.(?:br|ao|pt|es|de|uk))?$'
+    padrao = r'^(?!.*\.\.)[\w\._-]{2,}@[\w\._-]+\.[a-z]{2,3}(?:\.(?:br|ao|pt|es|de|uk))?$'
     return re.match(padrao, email) is not None
 
 def validar_telefone(telefone):
@@ -20,12 +24,11 @@ def validar_telefone(telefone):
     return re.match(padrao1, telefone) is not None or re.match(padrao2, telefone) is not None
 
 def extrair_emails(texto):
-    padrao = r'[\w\._-]{2,}@[\w\._-]+\.[a-z]{2,3}(?:\.(?:br|ao|pt|es|de|uk))?'
+    padrao = r'[\w\._-]{2,}@(?![.\-])(?:[\w-]{1,63}\.)+[a-zA-Z]{2,63}'
     return re.findall(padrao, texto)
 
-# Exemplo de uso
 if __name__ == "__main__":
-    nome = "João da Silva"
+    nome = "João da Silva_-"
     cpf = "123.456.789-00"
     email = "joao.silva@example.com"
     telefone = "(12)34567-8901"
