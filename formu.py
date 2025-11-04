@@ -24,7 +24,7 @@ def validar_telefone(telefone):
     return re.match(padrao1, telefone) is not None or re.match(padrao2, telefone) is not None
 
 def extrair_emails(texto):
-    padrao = r'[\w\._-]{2,}@(?![.\-])(?:[\w-]{1,63}\.)+[a-zA-Z]{2,63}'
+    padrao = r'\b(?!.*\.\.)[\w\._-]{2,}@[\w\._-]+\.[a-z]{2,3}(?:\.(?:br|ao|pt|es|de|uk))?\b'
     return re.findall(padrao, texto)
 
 if __name__ == "__main__":
